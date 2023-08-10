@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="view_department_form_inherited">
+            <field name="name">hr.department.form.inherited</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+
+                <!-- Thêm tab Nhân viên vào view -->
+                <xpath expr="//notebook" position="inside">
+                    <page string="Nhân viên">
+                        <field name="member_ids">
+                            <tree multi="True">
+                                <field name="name" position="attributes">
+                                    <attribute name="unique">1</attribute>
+                                </field>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="action_employee_department">
+            <field name="name">Employee Department</field>
+            <field name="res_model">hr.department</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_add_employee">
+            <field name="name">Add Employee</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="hr.view_employee_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <!-- Menuitem -->
+        <menuitem id="menu_employee_department" name="Employee Department" sequence="10"/>
+        <menuitem id="menu_employee_department_list" name="Employee Department" parent="menu_employee_department"
+                  sequence="5" action="action_employee_department"/>
+    </data>
+</odoo>

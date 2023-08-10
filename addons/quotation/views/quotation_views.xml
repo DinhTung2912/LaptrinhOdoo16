@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+
+        <!-- Định nghĩa action cho danh sách quotation -->
+        <record id="action_quotation" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" eval="False"/>
+        </record>
+        <record id="view_sale_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tax_totals']" position="after">
+                    <field name="item_discount_percent"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_sale_order_form_inherit_discount" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.discount</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='item_discount_percent']" position="after">
+                    <field name="discount_amount" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_sale_order_form_inherit_grand_total" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.grand_total</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='discount_amount']" position="after">
+                    <field name="grand_total" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="report_sale_order_inherit" model="ir.ui.view">
+            <field name="name">report.sale.order.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.report_saleorder_document"/>
+            <field name="arch" type="xml">
+                <!-- Add discount_percent, discount_amount, and grand_total to the report -->
+                <xpath expr="//div[@name='total']" position="before">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <field name="discount_percent" string="Discount (%)"/>
+                            <field name="discount_amount" string="Discount Amount"/>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <strong>Grand Total:</strong>
+                            <span t-field="doc.grand_total"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+        <menuitem id="quotation_menu_root" name="Quotation" sequence="10"/>
+        <menuitem id="sale_order_menu" name="Orders" parent="quotation_menu_root" sequence="10"/>
+        <menuitem id="menu_quotation" name="Quotations" parent="sale_order_menu" action="action_quotation"
+                  sequence="20"/>
+
+
+    </data>
+</odoo>
+

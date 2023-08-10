@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Định nghĩa menu Library -->
+        <menuitem id="menu_library_root" name="Library"  sequence="10" web_icon="menu_library_root,static/description/icon.png" />
+        <menuitem id="menu_library_settings" name="Settings" parent="menu_library_root" sequence="10" />
+
+        <menuitem id="menu_library_students" name="Students" parent="menu_library_settings" action="action_student_list" sequence="10" />
+        <menuitem id="menu_subject" name="Subjects" parent="menu_library_root" action="action_subject_list" sequence="20"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_library_student,access_library_student,model_library_student,base.group_user,1,1,1,1
+access_library_subjects,access_library_subjects,model_library_subjects,base.group_user,1,1,1,1
+access_library_subject_registration,access_library_subject_registration,model_library_subject_registration,base.group_user,1,1,1,1
+
+
