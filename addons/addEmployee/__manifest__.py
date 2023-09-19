@@ -1,10 +1,11 @@
 {
     'name': 'Custom Department',
     'version': '1.0',
+    'author': 'Dinh Tung',
     'category': 'Human Resources',
     'summary': 'Custom Department Module',
     'description': """This module inherits view and model of Department.""",
-    'depends': ['base','hr'],
+    'depends': ['base', 'hr'],
     'data': [
         'views/employee_department_view.xml'
 

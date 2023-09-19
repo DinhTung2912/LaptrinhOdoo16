@@ -3,7 +3,7 @@
     'version': '1.0',
     'summary': 'Quotation Module',
     'description': 'Module to extend Sale module and add quotation functionality',
-    'author': 'Your Name',
+    'author': 'Dinh Tung',
     'depends': ['sale'],
     'data': [
         'views/quotation_views.xml',

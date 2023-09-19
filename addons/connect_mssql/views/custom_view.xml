@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="view_custom_import_button" model="ir.ui.view">
+            <field name="name">custom.import.button</field>
+            <field name="model">ir.ui.view</field>
+            <field name="arch" type="xml">
+                <form>
+                    <button name="action_import_data" string="Import Data from SQL to Odoo"
+                            type="object" class="oe_highlight"/>
+                </form>
+            </field>
+        </record>
+        <record id="action_import_data" model="ir.actions.server">
+            <field name="name">Import Data from SQL to Odoo</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_management_payment"/>
+            <field name="state">code</field>
+            <field name="code">model.import_data_from_sql_to_odoo()</field>
+        </record>
+        <record id="menu_custom_import" model="ir.ui.menu">
+            <field name="name">Import Data</field>
+            <field name="action" ref="action_import_data"/>
+        </record>
+    </data>
+</odoo>

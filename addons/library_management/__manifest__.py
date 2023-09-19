@@ -3,7 +3,7 @@
     'summary': 'Library Management Module',
     'description': 'Module for managing library and student information',
     'version': '1.0',
-    'author': 'Your Name',
+    'author': 'Dinh Tung',
     'category': 'Uncategorized',
     'depends': ['base'],
     'images': [

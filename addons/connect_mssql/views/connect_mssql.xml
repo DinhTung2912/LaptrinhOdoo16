@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- View definition for 'management.payment' -->
+        <record id="view_management_payment_form" model="ir.ui.view">
+            <field name="name">management.payment.form</field>
+            <field name="model">management.payment</field>
+            <field name="arch" type="xml">
+                <form string="Payment Management Form">
+                    <group>
+                        <group>
+                            <field name="time"/>
+                            <field name="payment_id"/>
+                            <field name="customer_id"/>
+                            <field name="customer_name"/>
+                        </group>
+                        <group>
+                            <field name="current_amount"/>
+                            <field name="user_name"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_management_payment_tree" model="ir.ui.view">
+            <field name="name">management.payment.tree</field>
+            <field name="model">management.payment</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Management Tree">
+                    <field name="payment_id"/>
+                    <field name="customer_name"/>
+                    <field name="current_amount"/>
+                    <field name="status"/>
+                    <button name="load_payment_line" type="object" string="+" class="oe_highlight btn-danger col4">
+
+                    </button>
+
+                </tree>
+
+            </field>
+        </record>
+
+
+        <!-- Action definition to open the 'management.payment' form view -->
+        <record id="action_management_payment_form" model="ir.actions.act_window">
+            <field name="name">Payment Management</field>
+            <field name="res_model">management.payment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a new payment record.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu item to access the 'management.payment' list view -->
+        <menuitem id="menu_management_payment" name="Payment Management" sequence="10"/>
+        <menuitem id="menu_payment" name="Pay Ment" parent="menu_management_payment"
+                  action="action_management_payment_form"/>
+
+    </data>
+</odoo>
+
+
